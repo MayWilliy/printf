@@ -5,7 +5,7 @@
 
 /**
 *_printf-output - Write a function that produces output according to a format
-*@format: character string contaning zero or more
+*@format: character string containing zero or more
 *Return: the number of characters printed (excluding the null byte)
 */
 
