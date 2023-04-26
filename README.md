@@ -88,4 +88,5 @@ Thi code is explains how printf works and how to design
 the proper formatting conversion specifier
 created by Mariam Williams and Marvin Namwamba
 This is our first peered Alx project 
-Copyright: MIT.
+Copyright: MIT
+Content is distibuted under the creative commons NSA licience.

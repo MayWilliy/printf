@@ -1,3 +1,1 @@
-#ifndef SPECIFIER_FUNCTIONS_C
-#define SPECIFIER_FUNCTIONS_C
-#endif
+
