@@ -1,5 +1,5 @@
 #include "main.h"
-#include <strarg.h>
+#include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
 
@@ -14,27 +14,29 @@ int _printf(const char *format, ...)
 	va_list valist;
 	int count = 0;
 
-	if (format == NULL);
-		return;
+	if (format == NULL)
+		return(0);
 
 	va_start (valist, format);
-		if (* format == 'd')
+		while (* format == '\0')
 		{
-			char d = valist(valist, int);
-				putchar (d);
-				count++;
 
-			if (* format == 'i')
+			if (* format == 'd' || * format == 'i')
 			{
-				char i = valist(valist, int);
-					putchar (i);
+				int num  = va_arg (valist, int);
+					printf ("%d", num);
 					count++;
 			}
-		}
-		else
-		{
-		putchar (*format)
-		count++;
+			else if (* format == '%')
+			{
+				putchar ('%')
+				count++;
+			}
+			else
+			{
+				putchar (*format)
+				count++;
+			}
 		}
 	format++;
 
