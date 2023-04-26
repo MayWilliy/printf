@@ -1,4 +1,9 @@
 #include "main.h"
+/**
+ * pchar - functions that prints character
+ * @c : character
+ * Return: the numbers of characters print except null byte
+ */
 int pchar(va_list c)
 {
 	unsigned char my_char;
@@ -7,7 +12,11 @@ int pchar(va_list c)
 	_putch(my_char);
 	return (1);
 }
-
+/**
+ * pstring - function that prints strings
+ * @st : strings
+ * Return: the numbers of character printed expect null byte
+ */
 int pstring(va_list st)
 {
 	char *str;
@@ -18,22 +27,26 @@ int pstring(va_list st)
 		str = "(null)";
 	while (str[idx])
 	{
-		_putch (str[idx]);
+		_putch(str[idx]);
 		idx++;
 	}
 	return (idx);
 }
-
+/**
+ * pdec - function thta prints decimal
+ * @d : decimal
+ * Return: the character printed expect null byte
+ */
 int pdec(va_list d)
 {
-	int len = 0, pow, j ,digit, n, count = 0, num;
+	int len = 0, pow, j, digit, n, count = 0, num;
 
 	n = va_arg(d, int);
 	if (n != 0)
 	{
 		if (n < 0)
 		{
-			_putch ('-');
+			_putch('-');
 			count++;
 		}
 		num = n;
@@ -57,14 +70,18 @@ int pdec(va_list d)
 			pow /= 10;
 		}
 	}
-	else 
+	else
 	{
-		_putch ('0');
+		_putch('0');
 		return (1);
 	}
 	return (count);
 }
-
+/**
+ * pint - function that prints integer
+ * @i : integer
+ * Return: the number of characters to be printed expect null byte
+ */
 int pint(va_list i)
 {
 	unsigned int len, power, j;
@@ -75,7 +92,7 @@ int pint(va_list i)
 	{
 		if (n < 0)
 		{
-			_putch ('-');
+			_putch('-');
 			count++;
 		}
 		num = n;
@@ -92,7 +109,7 @@ int pint(va_list i)
 		{
 			digit = n / power;
 			if (n < 0)
-				_putch((digit * - 1) + 48);
+				_putch((digit * -1) + 48);
 			else
 				_putch(digit + '0');
 			count++;
@@ -103,7 +120,7 @@ int pint(va_list i)
 	}
 	else
 	{
-		_putch ('0');
+		_putch('0');
 		return (1);
 	}
 	return (count);
