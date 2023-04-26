@@ -1,7 +1,13 @@
 #ifndef SPECIFIER_FUNCTIONS_C
 #define SPECIFIER_FUNCTIONS_C
+#include <stdarg.h>
 
-int pchar(va_list c)
+/**
+ * pchar- function that print a character
+ * @c: character
+ * Return: the number of characters printed (excluding the null byte)
+ */
+int pchar(va_list, c)
 {
 	unsigned char my_char;
 
@@ -10,32 +16,45 @@ int pchar(va_list c)
 	return (1);
 }
 
-int pstring(va_list st)
+/**
+ * pstring- function that print a string
+ * @st : string
+ * Return: the number of characters printed (excluding the null byte)
+ */
+
+int pstring(va_list, str)
 }
 	char *str;
 	int idx = 0;
 
-	str = va_arg(st, char *);
+	char *str = va_arg(str, char *);
+
 	if (str == NULL)
 		str = "(null)";
+
 	while (str[idx])
 	{
-		_putch (str[idx]);
+		_putch(str[idx]);
 		idx++;
 	}
 	return (idx);
 }
 
-int pdec(va_list d)
+/**
+ * pdec - function that print decimal
+ * @d : decimal
+ * Return: the number of characters printed (excluding the null byte)
+ */
+int pdec(va_list, d)
 {
-	int len = 0, pow, j ,digit, n, count = 0, num;
+	int len = 0, pow, j, digit, n, count = 0, num;
 
 	n = va_arg(d, int);
 	if (n != 0)
 	{
 		if (n < 0)
 		{
-			_putch ('-');
+			_putch('-');
 			count++;
 		}
 		num = n;
@@ -59,14 +78,19 @@ int pdec(va_list d)
 			pow /= 10;
 		}
 	}
-	else 
+	else
 	{
-		_putch ('0');
+		_putch('0');
 		return (1);
 	}
 	return (count);
 }
 
+/**
+ * pint- fucntion that print an integer
+ * @i : integer
+ * Return: the number of characters printed (excluding the null byte)
+ */
 int pint(va_list i)
 {
 	unsigned int len, power, j;
@@ -77,42 +101,42 @@ int pint(va_list i)
 	{
 		if (n < 0)
 		{
-			_putch ('-');
+			_putch('-');
 			count++;
 		}
+
 		num = n;
 		len = 0;
+
 		while (num != 0)
 		{
 			num /= 10;
 			len++;
 		}
+
 		power = 1;
 		for (j = 1; j <= len - 1; j++)
 			power *= 10;
-		for (j = 1; j <= len; j++)
-		{
-			digit = n / power;
-			if (n < 0)
-				_putch((digit * - 1) + 48);
-			else
-				_putch(digit + '0');
-			count++;
 
-			n -= digit * power;
-			power /= 10;
+			for (j = 1; j <= len; j++)
+			{
+				digit = n / power;
+				if (n < 0)
+					_putch((digit * -1) + 48);
+				else
+					_putch(digit + '0');
+					count++;
+
+				n -= digit * power;
+				power /= 10;
+			}
 	}
 	else
 	{
-		_putch ('0');
+		_putch('0');
 		return (1);
 	}
 	return (count);
 }
-	}
-	else
-	{
-		_putch ('0');
-		return (1);
-	}
+
 #endif

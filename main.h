@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+#endif
 
 #ifndef functions
 #define functions
@@ -12,6 +13,7 @@ int pstring(va_list s);
 int pdec(va_list d);
 int pchar(va_list c);
 
+#include <stdlib.h>
 #include <unistd.h>
 /**
  * _putchar - write the character c to stdout
@@ -23,7 +25,7 @@ int pchar(va_list c);
 
 int _putch(char ch)
 {
-	return (write(1, &ch< 1));
+	return (write(1, &ch < 1));
 }
 
 /**

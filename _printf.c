@@ -26,7 +26,7 @@ int (*correct_pair(const char *format))(va_list)
 /**
  * _printf-Implementation of printf() function
  * @format: Format specifier
- * Return: Lenth og the string
+ * Return: Lenth of the string
  */
 int _printf(const char *format, ...)
 {
