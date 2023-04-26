@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef SPECIFIER_FUNCTIONS_C
 #define SPECIFIER_FUNCTIONS_C
 #include <stdarg.h>
@@ -8,6 +9,15 @@
  * Return: the number of characters printed (excluding the null byte)
  */
 int pchar(va_list, c)
+=======
+#include "main.h"
+/**
+ * pchar - Prints a character
+ * @c: Character to be printed
+ * Return: 1 (ONE)
+ */
+int pchar(va_list c)
+>>>>>>> 17c68fb022b28781cbeda11b23f78fb3c62bd000
 {
 	unsigned char my_char;
 
@@ -15,6 +25,7 @@ int pchar(va_list, c)
 	_putch(my_char);
 	return (1);
 }
+<<<<<<< HEAD
 
 /**
  * pstring- function that print a string
@@ -24,6 +35,15 @@ int pchar(va_list, c)
 
 int pstring(va_list, str)
 }
+=======
+/**
+ * pstring - Prints a string
+ * @st: String to be printed
+ * Return: Length of the string
+ */
+int pstring(va_list st)
+{
+>>>>>>> 17c68fb022b28781cbeda11b23f78fb3c62bd000
 	char *str;
 	int idx = 0;
 
@@ -39,6 +59,7 @@ int pstring(va_list, str)
 	}
 	return (idx);
 }
+<<<<<<< HEAD
 
 /**
  * pdec - function that print decimal
@@ -46,6 +67,14 @@ int pstring(va_list, str)
  * Return: the number of characters printed (excluding the null byte)
  */
 int pdec(va_list, d)
+=======
+/**
+ * pdec - Prints a decimal number
+ * @d: Decimal to be printed
+ * Return: Lenth og the decimal
+ */
+int pdec(va_list d)
+>>>>>>> 17c68fb022b28781cbeda11b23f78fb3c62bd000
 {
 	int len = 0, pow, j, digit, n, count = 0, num;
 
@@ -66,7 +95,7 @@ int pdec(va_list, d)
 		pow = 1;
 		for (j = 1; j <= len - 1; j++)
 			pow *= 10;
-		for (j = 1; j <= len - 1; j++)
+		for (j = 1; j <= len; j++)
 		{
 			digit = n / pow;
 			if (n < 0)
@@ -85,16 +114,23 @@ int pdec(va_list, d)
 	}
 	return (count);
 }
+<<<<<<< HEAD
 
 /**
  * pint- fucntion that print an integer
  * @i : integer
  * Return: the number of characters printed (excluding the null byte)
+=======
+/**
+ * pint - Prints and integer
+ * @i: Integer to be printed
+ * Return: Length of the integer
+>>>>>>> 17c68fb022b28781cbeda11b23f78fb3c62bd000
  */
 int pint(va_list i)
 {
 	unsigned int len, power, j;
-	unsigned int digit, n, count = 0, num;
+	int digit, n, count = 0, num;
 
 	n = va_arg(i, int);
 	if (n != 0)
@@ -117,6 +153,7 @@ int pint(va_list i)
 		power = 1;
 		for (j = 1; j <= len - 1; j++)
 			power *= 10;
+<<<<<<< HEAD
 
 			for (j = 1; j <= len; j++)
 			{
@@ -130,6 +167,20 @@ int pint(va_list i)
 				n -= digit * power;
 				power /= 10;
 			}
+=======
+		for (j = 1; j <= len; j++)
+		{
+			digit = n / power;
+			if (n < 0)
+				_putch((digit * -1) + 48);
+			else
+				_putch(digit + '0');
+			count++;
+
+			n -= digit * power;
+			power /= 10;
+		}
+>>>>>>> 17c68fb022b28781cbeda11b23f78fb3c62bd000
 	}
 	else
 	{
@@ -138,5 +189,8 @@ int pint(va_list i)
 	}
 	return (count);
 }
+<<<<<<< HEAD
 
 #endif
+=======
+>>>>>>> 17c68fb022b28781cbeda11b23f78fb3c62bd000
