@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- * pchar: function that prints character
+ * pchar - function that prints character
  * @c: character
  * Return: the nuber of characters to be printed without null byte
  */
