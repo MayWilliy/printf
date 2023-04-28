@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 /**
  * pchar - function that prints character
  * @c: character
