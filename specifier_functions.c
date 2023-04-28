@@ -39,7 +39,7 @@ int pstring(va_list st)
  */
 int pdec(va_list d)
 {
-	int len = 0, pow, j, digit, n, count = 0, num;
+	int l = 0, pow, j, dg, n, count = 0, num;
 
 	n = va_arg(d, int);
 	if (n != 0)
@@ -53,20 +53,20 @@ int pdec(va_list d)
 		while (num != 0)
 		{
 			num /= 10;
-			len++;
+			l++;
 		}
 		pow = 1;
-		for (j = 1; j <= len - 1; j++)
+		for (j = 1; j <= l - 1; j++)
 			pow *= 10;
-		for (j = 1; j <= len; j++)
+		for (j = 1; j <= l; j++)
 		{
-			digit = n / pow;
+			dg = n / pow;
 			if (n < 0)
-				_putch((digit * -1) + 48);
+				_putch((dg * -1) + 48);
 			else
-				_putch(digit + '0');
+				_putch(dg + '0');
 			count++;
-			n -= digit * pow;
+			n -= dg * pow;
 			pow /= 10;
 		}
 	}
@@ -124,4 +124,26 @@ int pint(va_list i)
 		return (1);
 	}
 	return (count);
+}
+int pbin(va_list args)
+{
+	unsigned int n = va_arg(args, unsigned int);
+	char bin[33];
+	int i;
+	int idx = 0;
+
+	if (n == 0)
+	{
+		_putch('0');
+		return (1);
+	}
+	while (n > 0)
+	{
+		bin[idx++] = (n % 2) + '0';
+		n /= 2;
+	}
+	bin[idx] = '\0';
+	for (i = (idx - 1); i >= 0; i--)
+		_putch(bin[i]);
+	return (idx);
 }

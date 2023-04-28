@@ -8,6 +8,7 @@ int pint(va_list i);
 int pstring(va_list s);
 int pdec(va_list d);
 int pchar(va_list c);
+int pbin(va_list args);
 /**
  * struct switcher - matches format to function
  * @sc: The specifier
