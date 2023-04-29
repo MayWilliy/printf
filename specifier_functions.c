@@ -7,10 +7,10 @@
  */
 int pchar(va_list c)
 {
-	unsigned char my_char;
+	unsigned char my_code;
 
-	my_char = va_arg(c, int);
-	_putch(my_char);
+	my_code = va_arg(c, int);
+	_putch(my_code);
 	return (1);
 }
 /**
@@ -21,17 +21,17 @@ int pchar(va_list c)
 int pstring(va_list st)
 {
 	char *str;
-	int idx = 0;
+	int box = 0;
 
 	str = va_arg(st, char *);
 	if (str == NULL)
 		str = "(null)";
-	while (str[idx])
+	while (str[box])
 	{
-		_putch(str[idx]);
-		idx++;
+		_putch(str[box]);
+		box++;
 	}
-	return (idx);
+	return (box);
 }
 /**
  * pdec - function that prints decimal
@@ -40,7 +40,7 @@ int pstring(va_list st)
  */
 int pdec(va_list d)
 {
-	int l = 0, pow, j, dg, n, count = 0, num;
+	int len = 0, cart, j, dg, n, count = 0, num;
 
 	n = va_arg(d, int);
 	if (n != 0)
@@ -54,21 +54,22 @@ int pdec(va_list d)
 		while (num != 0)
 		{
 			num /= 10;
-			l++;
+			len++;
 		}
-		pow = 1;
-		for (j = 1; j <= l - 1; j++)
-			pow *= 10;
-		for (j = 1; j <= l; j++)
+
+		cart = 1;
+		for (j = 1; j <= len - 1; j++)
+			cart *= 10;
+		for (j = 1; j <= len; j++)
 		{
-			dg = n / pow;
+			dg = n / cart;
 			if (n < 0)
 				_putch((dg * -1) + 48);
 			else
 				_putch(dg + '0');
 			count++;
-			n -= dg * pow;
-			pow /= 10;
+			n -= dg * cart;
+			cart /= 10;
 		}
 	}
 	else
@@ -85,8 +86,8 @@ int pdec(va_list d)
  */
 int pint(va_list i)
 {
-	unsigned int len, power, j;
-	int digit, n, count = 0, num;
+	unsigned int len, point, j;
+	int assign, n, count = 0, num;
 
 	n = va_arg(i, int);
 	if (n != 0)
@@ -103,20 +104,20 @@ int pint(va_list i)
 			num /= 10;
 			len++;
 		}
-		power = 1;
+		point = 1;
 		for (j = 1; j <= len - 1; j++)
-			power *= 10;
+			point *= 10;
 		for (j = 1; j <= len; j++)
 		{
-			digit = n / power;
+			assign = n / point;
 			if (n < 0)
-				_putch((digit * -1) + 48);
+				_putch((assign * -1) + 48);
 			else
-				_putch(digit + '0');
+				_putch(assign + '0');
 			count++;
 
-			n -= digit * power;
-			power /= 10;
+			n -= assign * point;
+			point /= 10;
 		}
 	}
 	else
@@ -127,9 +128,9 @@ int pint(va_list i)
 	return (count);
 }
 /**
- * pbin - Print binary
- * @args: - Arguments
- * Return: index
+ * pbin - function that prints binary
+ * @args: arguments
+ * Return: the number of characters printed (excluding the null byte)
  */
 int pbin(va_list args)
 {
