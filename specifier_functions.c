@@ -40,7 +40,7 @@ int pstring(va_list st)
  */
 int pdec(va_list d)
 {
-	int len =0, cart, j, dg, n, count = 0, num;
+	int len = 0, cart, j, dg, n, count = 0, num;
 
 	n = va_arg(d, int);
 	if (n != 0)
