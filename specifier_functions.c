@@ -28,7 +28,7 @@ int pstring(va_list st)
 		str = "(null)";
 	while (str[box])
 	{
-		_putch(str[idx]);
+		_putch(str[box]);
 		box++;
 	}
 	return (box);
@@ -40,7 +40,7 @@ int pstring(va_list st)
  */
 int pdec(va_list d)
 {
-	int len = 0, cart, j, magic, n, count = 0, num;
+	int len =0, cart, j, dg, n, count = 0, num;
 
 	n = va_arg(d, int);
 	if (n != 0)
@@ -56,18 +56,19 @@ int pdec(va_list d)
 			num /= 10;
 			len++;
 		}
+
 		cart = 1;
 		for (j = 1; j <= len - 1; j++)
 			cart *= 10;
 		for (j = 1; j <= len; j++)
 		{
-			magic = n /cart;
+			dg = n / cart;
 			if (n < 0)
-				_putch((magic * -1) + 48);
+				_putch((dg * -1) + 48);
 			else
-				_putch(magic + '0');
+				_putch(dg + '0');
 			count++;
-			n -= magic * cart;
+			n -= dg * cart;
 			cart /= 10;
 		}
 	}
@@ -125,4 +126,31 @@ int pint(va_list i)
 		return (1);
 	}
 	return (count);
+}
+/**
+ * pbin - function that prints binary
+ * @args: arguments
+ * Return: the number of characters printed (excluding the null byte)
+ */
+int pbin(va_list args)
+{
+	unsigned int n = va_arg(args, unsigned int);
+	char bin[33];
+	int i;
+	int idx = 0;
+
+	if (n == 0)
+	{
+		_putch('0');
+		return (1);
+	}
+	while (n > 0)
+	{
+		bin[idx++] = (n % 2) + '0';
+		n /= 2;
+	}
+	bin[idx] = '\0';
+	for (i = (idx - 1); i >= 0; i--)
+		_putch(bin[i]);
+	return (idx);
 }

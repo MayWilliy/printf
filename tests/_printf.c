@@ -13,6 +13,7 @@ int (*correct_pair(const char *format))(va_list)
 		{"s", pstring},
 		{"d", pdec},
 		{"i", pint},
+		{"b", pbin},
 		{NULL, NULL}
 	};
 	while (pair[index].sc)
