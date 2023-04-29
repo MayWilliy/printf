@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdarg.h>
 /**
  * pchar - function that prints character
  * @c: character
@@ -125,6 +126,11 @@ int pint(va_list i)
 	}
 	return (count);
 }
+/**
+ * pbin - Print binary
+ * @args: - Arguments
+ * Return: index
+ */
 int pbin(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);

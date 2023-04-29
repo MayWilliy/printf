@@ -14,6 +14,8 @@ int (*correct_pair(const char *format))(va_list)
 		{"d", pdec},
 		{"i", pint},
 		{"b", pbin},
+		{"x", phex},
+		{"X", pHex},
 		{NULL, NULL}
 	};
 	while (pair[index].sc)

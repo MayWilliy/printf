@@ -1,6 +1,7 @@
 #ifndef functions
 #define functions
 #include <stdarg.h>
+#include <stdlib.h>
 #include <unistd.h>
 int _putch(char ch);
 int _printf(const char *format, ...);
@@ -9,6 +10,8 @@ int pstring(va_list s);
 int pdec(va_list d);
 int pchar(va_list c);
 int pbin(va_list args);
+int phex(va_list lst);
+int pHex(va_list lst);
 /**
  * struct switcher - matches format to function
  * @sc: The specifier
